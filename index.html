@@ -14,9 +14,11 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 100vh;
+            min-height: 100vh;
             background-color: #f4f4f4;
             margin: 0;
+            padding: 10px; /* Added padding to prevent content cutoff */
+            box-sizing: border-box;
         }
         .calculator {
             background: #fff;
@@ -24,6 +26,9 @@
             border-radius: 10px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             text-align: center;
+            width: 100%;
+            max-width: 400px; /* Limit the width for better mobile viewing */
+            box-sizing: border-box;
         }
         .form-group {
             display: flex;
@@ -39,7 +44,7 @@
             margin-bottom: 5px;
         }
         .operation-symbol {
-            font-size: 1.5em;
+            font-size: 2em;
             font-weight: bold;
             margin: 0 10px;
             display: flex;
@@ -49,6 +54,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
+            flex-wrap: wrap; /* Allow wrapping for smaller screens */
         }
         label {
             font-weight: bold;
@@ -56,7 +62,10 @@
         button {
             margin-top: 20px;
             font-weight: bold;
-            font-size: medium;
+            padding: 10px 20px;
+            font-size: 1em;
+            border-radius: 5px;
+            cursor: pointer;
         }
     </style>
 </head>
