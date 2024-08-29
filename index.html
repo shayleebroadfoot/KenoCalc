@@ -17,7 +17,7 @@
             min-height: 100vh;
             background-color: #f4f4f4;
             margin: 0;
-            padding: 10px; /* Added padding to prevent content cutoff */
+            padding: 0 15px; 
             box-sizing: border-box;
         }
         .calculator {
@@ -27,7 +27,7 @@
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             text-align: center;
             width: 100%;
-            max-width: 400px; /* Limit the width for better mobile viewing */
+            max-width: 400px; 
             box-sizing: border-box;
         }
         .form-group {
@@ -37,11 +37,13 @@
             margin-bottom: 15px;
         }
         .form-group input {
-            width: 100px;
+            width: 100%;
+            max-width: 120px; 
             text-align: right;
             font-size: 1.2em;
-            padding: 5px;
+            padding: 8px;
             margin-bottom: 5px;
+            box-sizing: border-box;
         }
         .operation-symbol {
             font-size: 2em;
@@ -49,23 +51,28 @@
             margin: 0 10px;
             display: flex;
             align-items: center;
+            justify-content: center;
         }
         .operation-row {
             display: flex;
             justify-content: center;
             align-items: center;
-            flex-wrap: wrap; /* Allow wrapping for smaller screens */
+            flex-wrap: wrap; 
         }
         label {
             font-weight: bold;
+            margin-top: 5px;
+            font-size: 1.1em; 
         }
         button {
             margin-top: 20px;
             font-weight: bold;
-            padding: 10px 20px;
+            padding: 12px 24px; 
             font-size: 1em;
             border-radius: 5px;
             cursor: pointer;
+            width: 100%;
+            max-width: 200px; 
         }
     </style>
 </head>
