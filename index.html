@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Keno Calculator</title>
+    <!-- React and ReactDOM via CDN -->
+    <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f4f4f4;
+            margin: 0;
+        }
+        .calculator {
+            background: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        .form-group input {
+            width: 100px;
+            text-align: right;
+            font-size: 1.2em;
+            padding: 5px;
+            margin-bottom: 5px;
+        }
+        .operation-symbol {
+            font-size: 1.5em;
+            font-weight: bold;
+            margin: 0 10px;
+            display: flex;
+            align-items: center;
+        }
+        .operation-row {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        label {
+            font-weight: bold;
+        }
+        button {
+            margin-top: 20px;
+            font-weight: bold;
+            font-size: medium;
+        }
+    </style>
+</head>
+<body>
+    <div id="root"></div>
+
+    <script type="text/babel">
+        const { useState } = React;
+
+        function KenoCalculator() {
+            const [formData, setFormData] = useState({
+                dayKeno: '',
+                totalKeno: ''
+            });
+
+            const [nightKeno, setNightKeno] = useState(null);
+
+            const handleChange = (e) => {
+                const { name, value } = e.target;
+                setFormData({
+                    ...formData,
+                    [name]: value
+                });
+            };
+
+            const handleSubmit = (e) => {
+                e.preventDefault();
+                const dayKeno = parseFloat(formData.dayKeno);
+                const totalKeno = parseFloat(formData.totalKeno);
+                const nightKenoCalc = totalKeno - dayKeno;
+                setNightKeno(nightKenoCalc);
+            };
+
+            return (
+                <div className="calculator">
+                    <h1>Keno Calculator</h1>
+                    <form onSubmit={handleSubmit}>
+                        <div className="operation-row">
+                            <div className="form-group">
+                                <input
+                                    type="number"
+                                    id="dayKeno"
+                                    name="dayKeno"
+                                    value={formData.dayKeno}
+                                    onChange={handleChange}
+                                    required
+                                />
+                                <label htmlFor="dayKeno" style={{ color: 'gold' }}>Day Keno</label>
+                            </div>
+                            <span className="operation-symbol">+</span>
+                            <div className="form-group">
+                                <input
+                                    type="text"
+                                    id="nightKeno"
+                                    value={nightKeno !== null ? nightKeno.toFixed(2) : ''}
+                                    readOnly
+                                />
+                                <label htmlFor="nightKeno" style={{ color: 'blue' }}>Night Keno</label>
+                            </div>
+                            <span className="operation-symbol">=</span>
+                            <div className="form-group">
+                                <input
+                                    type="number"
+                                    id="totalKeno"
+                                    name="totalKeno"
+                                    value={formData.totalKeno}
+                                    onChange={handleChange}
+                                    required
+                                />
+                                <label htmlFor="totalKeno">Total Keno</label>
+                            </div>
+                        </div>
+                        <button type="submit">Calculate</button>
+                    </form>
+                </div>
+            );
+        }
+
+        ReactDOM.render(<KenoCalculator />, document.getElementById('root'));
+    </script>
+</body>
+</html>
